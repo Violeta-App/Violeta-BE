@@ -4,7 +4,7 @@
   "description": "Violeta application backend",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon --env-file=.env ./src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,13 +14,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Violeta-App/Violeta-BE/issues"
   },
   "homepage": "https://github.com/Violeta-App/Violeta-BE#readme",
   "dependencies": {
-    "express": "^4.21.2"
+    "@prisma/client": "^6.5.0",
+    "express": "^4.21.2",
+    "pg": "^8.14.0",
+    "prisma": "^6.5.0",
+    "violeta-be": "file:"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
