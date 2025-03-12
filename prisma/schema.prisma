@@ -9,6 +9,7 @@ datasource db {
 
 model Ocurrence {
   ocurrence_id     String @id @default(uuid())
+  ocurrence_description String
   address          String
   region           String
   state            String
@@ -19,6 +20,8 @@ model Ocurrence {
   time             String
   main_reason      String
   victim_situation String
+  anonymous        Boolean
+  victim_name      String
   ocurrence_score  Int
 
   @@map("ocurrences")

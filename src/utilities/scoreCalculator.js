@@ -9,6 +9,9 @@ const causeWeights = {
     "Operação Policial": 40,
     "Disparo Acidental": 30,
     "Arrastão": 20,
+    "Má Iluminação": 15,
+    "Pouca Movimentação": 15,
+    "Pouco Policiamento": 15,
     "Não Identificado": 10
 };
 

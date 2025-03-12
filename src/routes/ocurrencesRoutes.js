@@ -21,17 +21,22 @@ router.get('/:ocurrence_id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const occurrences = req.body
+        const occurrences = req.body;
+        
         if (!Array.isArray(occurrences) || occurrences.length === 0) {
             return res.status(400).json({ error: "O array de ocorrências é obrigatório e não pode estar vazio." })
         }
+
         const occurrencesWithScore = occurrences.map(occurrence => ({
             ...occurrence,
+            victim_name: occurrence.anonymous ? "" : occurrence.victim_name,
             ocurrence_score: calculateScore(occurrence.main_reason, occurrence.victim_situation)
-        }));
+        }))
+
         const newOccurrences = await prisma.ocurrence.createMany({
             data: occurrencesWithScore
         })
+
         res.status(201).json({ message: "Ocorrências criadas com sucesso!", count: newOccurrences.count })
     } catch (error) {
         res.status(500).json({ error: "Erro ao criar ocorrências." })
