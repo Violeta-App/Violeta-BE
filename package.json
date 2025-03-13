@@ -24,6 +24,7 @@
     "express": "^4.21.2",
     "pg": "^8.14.0",
     "prisma": "^6.5.0",
+    "swagger-ui-express": "^5.0.1",
     "violeta-be": "file:"
   },
   "devDependencies": {

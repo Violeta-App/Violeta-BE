@@ -1,0 +1,190 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Violeta App BE",
+    "description": "Documentação da API do backend do Aplicativo Violeta",
+    "version": "0.1.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8989/",
+      "description": "Server local"
+    }
+  ],
+  "paths": {
+    "/ocurrences": {
+      "get": {
+        "summary": "Retorna todas as ocorrências.",
+        "responses": {
+          "200": {
+            "description": "Array JSON com todas as ocorrências.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Ocurrence"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria novas ocorrências.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Ocurrence"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Ocorrências criadas com sucesso."
+          },
+          "400": {
+            "description": "Requisição inválida."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      }
+    },
+    "/ocurrences/{ocurrence_id}": {
+      "get": {
+        "summary": "Retorna uma ocorrência pelo ID.",
+        "parameters": [
+          {
+            "name": "ocurrence_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dados da ocorrência.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ocurrence"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza uma ocorrência pelo ID.",
+        "parameters": [
+          {
+            "name": "ocurrence_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ocurrence"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ocorrência atualizada."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta uma ocorrência pelo ID.",
+        "parameters": [
+          {
+            "name": "ocurrence_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ocorrência deletada com sucesso."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Ocurrence": {
+        "type": "object",
+        "properties": {
+          "ocurrence_id": {
+            "type": "string"
+          },
+          "ocurrence_description": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "date": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "main_reason": {
+            "type": "string"
+          },
+          "victim_situation": {
+            "type": "string"
+          },
+          "anonymous": {
+            "type": "boolean"
+          },
+          "victim_name": {
+            "type": "string"
+          },
+          "ocurrence_score": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
