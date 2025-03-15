@@ -7,8 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  user_id       String  @id @default(uuid())
+  user_name     String
+  user_login    String  @unique
+  user_password String
+  occurrences   Ocurrence[]
+
+  @@map("users")
+}
+
 model Ocurrence {
-  ocurrence_id     String @id @default(uuid())
+  ocurrence_id     String  @id @default(uuid())
   ocurrence_description String
   address          String
   region           String
@@ -23,6 +33,8 @@ model Ocurrence {
   anonymous        Boolean
   victim_name      String
   ocurrence_score  Int
+  user_id          String  @default("00000000-0000-0000-0000-000000000000")
+  user            User?  @relation(fields: [user_id], references: [user_id])
 
   @@map("ocurrences")
 }
