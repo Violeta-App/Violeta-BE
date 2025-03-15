@@ -19,6 +19,17 @@ router.get('/:ocurrence_id', async (req, res) => {
     res.status(200).json(ocurrence)
 })
 
+router.get('/:user_id', async (req, res) => {
+    const { user_id } = req.params
+    const ocurrences = await prisma.ocurrence.findMany({
+        where: {
+            user_id: user_id
+        }
+    })
+    console.log("Ocorrências encontradas:", ocurrences);
+    res.status(200).json(ocurrences)
+})
+
 router.post('/', async (req, res) => {
     try {
         const occurrences = req.body;

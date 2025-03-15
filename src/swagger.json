@@ -132,6 +132,33 @@
         }
       }
     },
+    "/ocurrences/{user_id}": {
+      "get": {
+        "summary": "Retorna a(s) ocorrência(s) dado um user_id.",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dados da(s) ocorrência(s).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ocurrence"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users": {
       "get": {
         "summary": "Retorna todas as usuárias.",
