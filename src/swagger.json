@@ -40,7 +40,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Ocurrence"
+                  "$ref": "#/components/schemas/OcurrenceWithoutId"
                 }
               }
             }
@@ -131,6 +131,126 @@
           }
         }
       }
+    },
+    "/users": {
+      "get": {
+        "summary": "Retorna todas as usuárias.",
+        "responses": {
+          "200": {
+            "description": "Array JSON com todas as usuárias.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria novas usuárias.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UserWithoutId"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuárias criadas com sucesso."
+          },
+          "400": {
+            "description": "Requisição inválida."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "summary": "Retorna uma usuária pelo ID.",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dados da usuária.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza uma usuária pelo ID.",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuária atualizada."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta uma usuária pelo ID.",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuária deletada com sucesso."
+          }
+        }
+      }
     }
   },
   "components": {
@@ -182,6 +302,84 @@
           },
           "ocurrence_score": {
             "type": "integer"
+          }
+        }
+      },
+      "OcurrenceWithoutId": {
+        "type": "object",
+        "properties": {
+          "ocurrence_description": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "date": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "main_reason": {
+            "type": "string"
+          },
+          "victim_situation": {
+            "type": "string"
+          },
+          "anonymous": {
+            "type": "boolean"
+          },
+          "victim_name": {
+            "type": "string"
+          },
+          "ocurrence_score": {
+            "type": "integer"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string"
+          },
+          "user_name": {
+            "type": "string"
+          },
+          "user_login": {
+            "type": "string"
+          },
+          "user_password": {
+            "type": "string"
+          }
+        }
+      },
+      "UserWithoutId": {
+        "type": "object",
+        "properties": {
+          "user_name": {
+            "type": "string"
+          },
+          "user_login": {
+            "type": "string"
+          },
+          "user_password": {
+            "type": "string"
           }
         }
       }
