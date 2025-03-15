@@ -5,29 +5,29 @@ import calculateScore from '../utilities/scoreCalculator.js'
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-    const ocurrences = await prisma.ocurrence.findMany()
-    res.status(200).json(ocurrences)
+    const occurrences = await prisma.occurrence.findMany()
+    res.status(200).json(occurrences)
 })
 
-router.get('/:ocurrence_id', async (req, res) => {
-    const { ocurrence_id } = req.params
-    const ocurrence = await prisma.ocurrence.findUnique({
+router.get('/:occurrence_id', async (req, res) => {
+    const { occurrence_id } = req.params
+    const occurrence = await prisma.occurrence.findUnique({
         where: {
-            ocurrence_id: ocurrence_id
+            occurrence_id: occurrence_id
         }
     })
-    res.status(200).json(ocurrence)
+    res.status(200).json(occurrence)
 })
 
 router.get('/:user_id', async (req, res) => {
     const { user_id } = req.params
-    const ocurrences = await prisma.ocurrence.findMany({
+    const occurrences = await prisma.occurrence.findMany({
         where: {
             user_id: user_id
         }
     })
-    console.log("Ocorrências encontradas:", ocurrences);
-    res.status(200).json(ocurrences)
+    console.log("Ocorrências encontradas:", occurrences);
+    res.status(200).json(occurrences)
 })
 
 router.post('/', async (req, res) => {
@@ -41,10 +41,10 @@ router.post('/', async (req, res) => {
         const occurrencesWithScore = occurrences.map(occurrence => ({
             ...occurrence,
             victim_name: occurrence.anonymous ? "" : occurrence.victim_name,
-            ocurrence_score: calculateScore(occurrence.main_reason, occurrence.victim_situation)
+            occurrence_score: calculateScore(occurrence.main_reason, occurrence.victim_situation)
         }))
 
-        const newOccurrences = await prisma.ocurrence.createMany({
+        const newOccurrences = await prisma.occurrence.createMany({
             data: occurrencesWithScore
         })
 
@@ -54,24 +54,24 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.put('/:ocurrence_id', async (req, res) => {
-    const ocurrence = req.body
-    const { ocurrence_id } = req.params
+router.put('/:occurrence_id', async (req, res) => {
+    const occurrence = req.body
+    const { occurrence_id } = req.params
 
-    const updatedOcurrence = await prisma.ocurrence.update({
+    const updatedoccurrence = await prisma.occurrence.update({
         where: {
-            ocurrence_id: ocurrence_id,
+            occurrence_id: occurrence_id,
         },
-        data: ocurrence,
+        data: occurrence,
     })
-    res.json(updatedOcurrence)
+    res.json(updatedoccurrence)
 })
 
-router.delete('/:ocurrence_id', async (req, res) => {
-    const { ocurrence_id } = req.params
-    await prisma.ocurrence.delete({
+router.delete('/:occurrence_id', async (req, res) => {
+    const { occurrence_id } = req.params
+    await prisma.occurrence.delete({
         where: {
-            ocurrence_id: ocurrence_id
+            occurrence_id: occurrence_id
         }
     })
     res.status(200).send({ message: "Ocorrência deletada." })

@@ -12,14 +12,14 @@ model User {
   user_name     String
   user_login    String  @unique
   user_password String
-  occurrences   Ocurrence[]
+  occurrences   Occurrence[]
 
   @@map("users")
 }
 
-model Ocurrence {
-  ocurrence_id     String  @id @default(uuid())
-  ocurrence_description String
+model Occurrence {
+  occurrence_id     String  @id @default(uuid())
+  occurrence_description String
   address          String
   region           String
   state            String
@@ -32,9 +32,9 @@ model Ocurrence {
   victim_situation String
   anonymous        Boolean
   victim_name      String
-  ocurrence_score  Int
+  occurrence_score  Int
   user_id          String  @default("00000000-0000-0000-0000-000000000000")
   user            User?  @relation(fields: [user_id], references: [user_id])
 
-  @@map("ocurrences")
+  @@map("occurrences")
 }

@@ -12,7 +12,7 @@
     }
   ],
   "paths": {
-    "/ocurrences": {
+    "/occurrences": {
       "get": {
         "summary": "Retorna todas as ocorrências.",
         "responses": {
@@ -23,7 +23,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Ocurrence"
+                    "$ref": "#/components/schemas/Occurrence"
                   }
                 }
               }
@@ -40,7 +40,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/OcurrenceWithoutId"
+                  "$ref": "#/components/schemas/OccurrenceWithoutId"
                 }
               }
             }
@@ -59,12 +59,12 @@
         }
       }
     },
-    "/ocurrences/{ocurrence_id}": {
+    "/occurrences/{occurrence_id}": {
       "get": {
         "summary": "Retorna uma ocorrência pelo ID.",
         "parameters": [
           {
-            "name": "ocurrence_id",
+            "name": "occurrence_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -78,7 +78,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Ocurrence"
+                  "$ref": "#/components/schemas/Occurrence"
                 }
               }
             }
@@ -89,7 +89,7 @@
         "summary": "Atualiza uma ocorrência pelo ID.",
         "parameters": [
           {
-            "name": "ocurrence_id",
+            "name": "occurrence_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -102,7 +102,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Ocurrence"
+                "$ref": "#/components/schemas/Occurrence"
               }
             }
           }
@@ -117,7 +117,7 @@
         "summary": "Deleta uma ocorrência pelo ID.",
         "parameters": [
           {
-            "name": "ocurrence_id",
+            "name": "occurrence_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -132,7 +132,7 @@
         }
       }
     },
-    "/ocurrences/{user_id}": {
+    "/occurrences/{user_id}": {
       "get": {
         "summary": "Retorna a(s) ocorrência(s) dado um user_id.",
         "parameters": [
@@ -151,7 +151,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Ocurrence"
+                  "$ref": "#/components/schemas/Occurrence"
                 }
               }
             }
@@ -282,13 +282,13 @@
   },
   "components": {
     "schemas": {
-      "Ocurrence": {
+      "Occurrence": {
         "type": "object",
         "properties": {
-          "ocurrence_id": {
+          "occurrence_id": {
             "type": "string"
           },
-          "ocurrence_description": {
+          "occurrence_description": {
             "type": "string"
           },
           "address": {
@@ -327,15 +327,15 @@
           "victim_name": {
             "type": "string"
           },
-          "ocurrence_score": {
+          "occurrence_score": {
             "type": "integer"
           }
         }
       },
-      "OcurrenceWithoutId": {
+      "OccurrenceWithoutId": {
         "type": "object",
         "properties": {
-          "ocurrence_description": {
+          "occurrence_description": {
             "type": "string"
           },
           "address": {
@@ -374,7 +374,7 @@
           "victim_name": {
             "type": "string"
           },
-          "ocurrence_score": {
+          "occurrence_score": {
             "type": "integer"
           }
         }

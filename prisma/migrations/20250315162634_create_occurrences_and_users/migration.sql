@@ -9,9 +9,9 @@ CREATE TABLE "users" (
 );
 
 -- CreateTable
-CREATE TABLE "ocurrences" (
-    "ocurrence_id" TEXT NOT NULL,
-    "ocurrence_description" TEXT NOT NULL,
+CREATE TABLE "occurrences" (
+    "occurrence_id" TEXT NOT NULL,
+    "occurrence_description" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "region" TEXT NOT NULL,
     "state" TEXT NOT NULL,
@@ -24,14 +24,14 @@ CREATE TABLE "ocurrences" (
     "victim_situation" TEXT NOT NULL,
     "anonymous" BOOLEAN NOT NULL,
     "victim_name" TEXT NOT NULL,
-    "ocurrence_score" INTEGER NOT NULL,
+    "occurrence_score" INTEGER NOT NULL,
     "user_id" TEXT NOT NULL DEFAULT '00000000-0000-0000-0000-000000000000',
 
-    CONSTRAINT "ocurrences_pkey" PRIMARY KEY ("ocurrence_id")
+    CONSTRAINT "occurrences_pkey" PRIMARY KEY ("occurrence_id")
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_user_login_key" ON "users"("user_login");
 
 -- AddForeignKey
-ALTER TABLE "ocurrences" ADD CONSTRAINT "ocurrences_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "occurrences" ADD CONSTRAINT "occurrences_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
