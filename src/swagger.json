@@ -289,6 +289,256 @@
           }
         }
       }
+    },
+    "/locais_seguros": {
+      "get": {
+        "tags": ["Locais Seguros"],
+        "summary": "Retorna todos os locais seguros.",
+        "responses": {
+          "200": {
+            "description": "Array JSON com todos os locais seguros.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LocalSeguro"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Locais Seguros"],
+        "summary": "Cria novos locais seguros.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LocalSeguroWithoutId"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Locais seguros criados com sucesso."
+          },
+          "400": {
+            "description": "Requisição inválida."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      }
+    },
+    "/locais_seguros/{id}": {
+      "get": {
+        "tags": ["Locais Seguros"],
+        "summary": "Retorna um local seguro pelo ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dados do local seguro.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalSeguro"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Locais Seguros"],
+        "summary": "Atualiza um local seguro pelo ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalSeguro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Local Seguro atualizado."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Locais Seguros"],
+        "summary": "Deleta um local seguro pelo ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Local seguro deletado com sucesso."
+          }
+        }
+      }
+    },
+    "/alertas": {
+      "get": {
+        "tags": ["Alertas"],
+        "summary": "Retorna todas os alertas.",
+        "responses": {
+          "200": {
+            "description": "Array JSON com todas os alertas.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Alerta"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Alertas"],
+        "summary": "Cria novos alertas.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AlertaWithoutId"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Alertas criados com sucesso."
+          },
+          "400": {
+            "description": "Requisição inválida."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      }
+    },
+    "/alertas/{alerta_id}": {
+      "get": {
+        "tags": ["Alertas"],
+        "summary": "Retorna um alerta pelo ID.",
+        "parameters": [
+          {
+            "name": "alerta_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dados do alerta.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alerta"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Alertas"],
+        "summary": "Atualiza um alerta pelo ID.",
+        "parameters": [
+          {
+            "name": "alerta_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alerta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Alerta atualizado."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Alertas"],
+        "summary": "Deleta um alerta pelo ID.",
+        "parameters": [
+          {
+            "name": "alerta_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Alerta deletado com sucesso."
+          }
+        }
+      }
     }
   },
   "components": {
@@ -418,6 +668,80 @@
           },
           "user_password": {
             "type": "string"
+          }
+        }
+      },
+      "Alerta": {
+        "type": "object",
+        "properties": {
+          "alerta_id": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "upvotes": {
+            "type": "integer"
+          },
+          "downvotes": {
+            "type": "integer"
+          }
+        }
+      },
+      "AlertaWithoutId": {
+        "type": "object",
+        "properties": {
+          "descricao": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          }
+        }
+      },
+      "LocalSeguro": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          }
+        }
+      },
+      "LocalSeguroWithoutId": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
           }
         }
       }

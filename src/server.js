@@ -1,6 +1,8 @@
 import express from 'express'
 import occurrencesRoutes from './routes/occurrencesRoutes.js'
 import usersRoutes from './routes/usersRoutes.js'
+import alertasRoutes from './routes/alertasRoutes.js'
+import locaisSegurosRoutes from './routes/locaisSegurosRoutes.js'
 import swaggerUi from 'swagger-ui-express'
 import swaggerDocument from './swagger.json' with { type: "json" };
 const app = express()
@@ -14,6 +16,8 @@ app.get('/', (req, res) => {
 
 app.use('/occurrences', occurrencesRoutes)
 app.use('/users', usersRoutes)
+app.use("/alertas", alertasRoutes)
+app.use("/locais_seguros", locaisSegurosRoutes)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
