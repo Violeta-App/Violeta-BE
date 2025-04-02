@@ -60,7 +60,7 @@ model LocalSeguro {
   name      String
   tipo      String?
   address   String   @default("")
-  rating   String   @default("")
+  rating   Float   @default(0)
   sunday   String   @default("")
   monday   String   @default("")
   tuesday   String   @default("")
