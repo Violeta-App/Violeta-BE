@@ -59,6 +59,15 @@ model LocalSeguro {
   id        String   @id @default(uuid())
   name      String
   tipo      String?
+  address   String   @default("")
+  rating   String   @default("")
+  sunday   String   @default("")
+  monday   String   @default("")
+  tuesday   String   @default("")
+  wednesday   String   @default("")
+  thursday   String   @default("")
+  friday   String   @default("")
+  saturday   String   @default("")
   latitude  Float
   longitude Float
   createdAt DateTime @default(now())

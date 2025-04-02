@@ -1,0 +1,10 @@
+-- AlterTable
+ALTER TABLE "locais_seguros" ADD COLUMN     "address" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "friday" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "monday" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "rating" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "saturday" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "sunday" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "thursday" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "tuesday" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "wednesday" TEXT NOT NULL DEFAULT '';
