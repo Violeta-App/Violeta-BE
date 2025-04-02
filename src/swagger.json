@@ -419,6 +419,36 @@
         }
       }
     },
+    "/locais_seguros/aberto": {
+      "post":{
+        "tags": ["Locais Seguros"],
+        "summary": "Retorna true ou false baseado no horário de funcionamento de um determinado local seguro.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalSeguroAberto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Local seguro encontrado, mas pode estar aberto ou fechado."
+          },
+          "404": {
+            "description": "Local seguro não encontrado."
+          },
+          "400": {
+            "description": "Horário de funcionamento não disponível para o dia informado."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      }
+    },
     "/alertas": {
       "get": {
         "tags": ["Alertas"],
@@ -742,6 +772,40 @@
           "tipo": {
             "type": "string"
           },
+          "address": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "number"
+          },
+          "sunday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "monday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "tuesday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "wednesday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "thursday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "friday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "saturday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
           "latitude": {
             "type": "number"
           },
@@ -759,11 +823,61 @@
           "tipo": {
             "type": "string"
           },
+          "address": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "number"
+          },
+          "sunday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "monday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "tuesday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "wednesday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "thursday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "friday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "saturday": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d-(?:[01]\\d|2[0-3]):[0-5]\\d$"
+          },
           "latitude": {
             "type": "number"
           },
           "longitude": {
             "type": "number"
+          }
+        }
+      },
+      "LocalSeguroAberto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string",
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "day": {
+            "type": "string",
+            "pattern": "^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)$"
           }
         }
       }
