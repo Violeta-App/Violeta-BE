@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "alertas" ADD COLUMN     "imagem" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "tipo" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "titulo" TEXT NOT NULL DEFAULT '';

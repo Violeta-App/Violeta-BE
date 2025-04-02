@@ -41,7 +41,10 @@ model Occurrence {
 
 model Alerta {
   alerta_id String   @id @default(uuid())
+  titulo String      @default("")
   descricao String
+  imagem String      @default("")
+  tipo String        @default("")
   latitude  Float
   longitude Float
   upvotes   Int      @default(0)
