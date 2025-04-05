@@ -624,6 +624,9 @@
           },
           "occurrence_score": {
             "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
           }
         }
       },
@@ -670,6 +673,9 @@
             "type": "string"
           },
           "occurrence_score": {
+            "type": "integer"
+          },
+          "user_id": {
             "type": "integer"
           }
         }
